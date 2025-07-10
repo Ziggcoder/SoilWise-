@@ -1,0 +1,159 @@
+version: '3.8'
+
+services:
+  # Local SQLite Database (for edge deployment)
+  edge-database:
+    image: sqlite:latest
+    volumes:
+      - ./data/edge.db:/data/database.db
+    restart: unless-stopped
+
+  # Local MQTT Broker
+  mqtt-broker:
+    image: eclipse-mosquitto:2.0
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mqtt/config:/mosquitto/config
+      - ./mqtt/data:/mosquitto/data
+      - ./mqtt/log:/mosquitto/log
+    restart: unless-stopped
+
+  # ChromaDB Vector Database (lightweight)
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/chroma:/chroma/chroma
+    environment:
+      CHROMA_SERVER_HOST: 0.0.0.0
+      CHROMA_SERVER_HTTP_PORT: 8000
+    restart: unless-stopped
+
+  # Ollama LLM Service (optimized for Pi)
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./data/ollama:/root/.ollama
+    environment:
+      OLLAMA_HOST: 0.0.0.0
+      OLLAMA_MODELS: llama3:8b
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+
+  # Edge Hub Application
+  edge-hub:
+    build:
+      context: ./apps/edge-hub
+      dockerfile: Dockerfile.arm64
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_PATH: /data/edge.db
+      MQTT_BROKER_URL: mqtt://mqtt-broker:1883
+      CHROMADB_URL: http://chromadb:8000
+      OLLAMA_URL: http://ollama:11434
+      SYNC_CLOUD_URL: ${CLOUD_API_URL}
+      SYNC_ENABLED: "true"
+      SYNC_INTERVAL: 300000  # 5 minutes
+      WHISPER_MODEL: base
+      TTS_MODEL: en-us
+      VOICE_ENABLED: "true"
+    volumes:
+      - ./data:/data
+      - ./models:/models
+      - /dev:/dev  # Access to hardware devices
+    depends_on:
+      - mqtt-broker
+      - chromadb
+      - ollama
+    privileged: true  # Required for hardware access
+    restart: unless-stopped
+
+  # PWA Farmer App (local)
+  pwa-local:
+    build:
+      context: ./apps/pwa-farmer
+      dockerfile: Dockerfile.edge
+    ports:
+      - "3001:3000"
+    environment:
+      REACT_APP_API_URL: http://edge-hub:3000/api
+      REACT_APP_OFFLINE_ENABLED: "true"
+      REACT_APP_SYNC_ENABLED: "true"
+    depends_on:
+      - edge-hub
+    restart: unless-stopped
+
+  # Local Web Dashboard
+  dashboard-local:
+    build:
+      context: ./apps/web-dashboard
+      dockerfile: Dockerfile.edge
+    ports:
+      - "3002:3000"
+    environment:
+      REACT_APP_API_URL: http://edge-hub:3000/api
+      REACT_APP_MQTT_URL: ws://mqtt-broker:9001
+      REACT_APP_EDGE_MODE: "true"
+    depends_on:
+      - edge-hub
+    restart: unless-stopped
+
+  # Nginx (local reverse proxy)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.edge.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - edge-hub
+      - pwa-local
+      - dashboard-local
+    restart: unless-stopped
+
+  # Watchtower (automatic updates)
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      WATCHTOWER_CLEANUP: "true"
+      WATCHTOWER_POLL_INTERVAL: 86400  # 24 hours
+    restart: unless-stopped
+
+  # System monitoring
+  node-exporter:
+    image: prom/node-exporter:latest
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+
+volumes:
+  edge_data:
+    driver: local
+    driver_opts:
+      device: /opt/soilwise/data
+      o: bind
+      type: none
+
+networks:
+  default:
+    driver: bridge

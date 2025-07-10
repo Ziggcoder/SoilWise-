@@ -1,0 +1,30 @@
+# Python dependencies for Voice Assistant
+# These should be installed in the Python environment
+
+# TTS (Text-to-Speech)
+TTS==0.16.6
+
+# Speech Recognition
+openai-whisper==20230314
+
+# Audio processing
+librosa==0.10.1
+soundfile==0.12.1
+sounddevice==0.4.6
+
+# Voice activity detection
+webrtcvad==2.0.10
+
+# Language models
+transformers==4.33.2
+torch==2.0.1
+torchaudio==2.0.2
+
+# HTTP client
+requests==2.31.0
+
+# Environment management
+python-dotenv==1.0.0
+
+# Development tools
+pytest==7.4.2
