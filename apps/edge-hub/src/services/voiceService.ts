@@ -28,6 +28,7 @@ export interface VoiceQuery {
 export class VoiceService {
   private aiService: AIService
   private config: VoiceConfig
+  public isReady = false
   private isInitialized = false
   private isListening = false
 
@@ -117,7 +118,7 @@ export class VoiceService {
       // Step 3: Generate text response
       const textResponse = this.generateTextResponse(aiResponse)
       query.response = textResponse
-      query.confidence = aiResponse.confidence
+      query.confidence = aiResponse.confidence || 0
 
       // Step 4: Convert text to speech
       const audioResponse = await this.textToSpeech(textResponse)
@@ -319,9 +320,28 @@ export class VoiceService {
     return this.isListening
   }
 
+  async processVoiceInput(audioData: Buffer): Promise<string> {
+    if (!this.isInitialized) {
+      throw new Error('Voice service not initialized')
+    }
+
+    try {
+      const query = await this.processVoiceQuery(audioData)
+      return query.response || 'I couldn\'t process your request.'
+    } catch (error) {
+      logger.error('Error processing voice input:', error)
+      throw error
+    }
+  }
+
   async shutdown(): Promise<void> {
     await this.stopListening()
     this.isInitialized = false
+    this.isReady = false
     logger.info('Voice Service shutdown')
+  }
+
+  async cleanup(): Promise<void> {
+    await this.shutdown()
   }
 }

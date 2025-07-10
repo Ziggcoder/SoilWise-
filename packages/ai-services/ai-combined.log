@@ -1,0 +1,20 @@
+{"level":"info","message":"AI Services initialized","service":"soilwise-ai","timestamp":"2025-07-10T22:42:28.388Z"}
+{"level":"error","message":"Failed to initialize AI Advisory Engine: Chroma getOrCreateCollection error: ChromaConnectionError: Failed to connect to chromadb. Make sure your server is running and try again. If you are running from a browser, make sure that your chromadb instance is configured to allow requests from the current origin using the CHROMA_SERVER_CORS_ALLOW_ORIGINS environment variable.","service":"soilwise-ai","stack":"Error: Chroma getOrCreateCollection error: ChromaConnectionError: Failed to connect to chromadb. Make sure your server is running and try again. If you are running from a browser, make sure that your chromadb instance is configured to allow requests from the current origin using the CHROMA_SERVER_CORS_ALLOW_ORIGINS environment variable.\n    at Chroma.ensureCollection (C:\\Users\\ku1d3\\OneDrive\\Desktop\\PROJECT\\SoilWise-\\node_modules\\@langchain\\community\\dist\\vectorstores\\chroma.cjs:125:23)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Function.fromExistingCollection (C:\\Users\\ku1d3\\OneDrive\\Desktop\\PROJECT\\SoilWise-\\node_modules\\@langchain\\community\\dist\\vectorstores\\chroma.cjs:300:9)\n    at async AIAdvisoryEngine.initialize (C:\\Users\\ku1d3\\OneDrive\\Desktop\\PROJECT\\SoilWise-\\packages\\ai-services\\src\\advisory\\advisoryEngine.ts:91:26)\n    at async AIServices.start (C:\\Users\\ku1d3\\OneDrive\\Desktop\\PROJECT\\SoilWise-\\packages\\ai-services\\src\\index.ts:16:7)","timestamp":"2025-07-10T22:42:28.527Z"}
+{"level":"info","message":"AI Services initialized","service":"soilwise-ai","timestamp":"2025-07-10T22:43:30.395Z"}
+{"level":"warn","message":"ChromaDB not available, running without vector store:","service":"soilwise-ai","timestamp":"2025-07-10T22:43:30.458Z"}
+{"level":"info","message":"Loaded 3 knowledge base documents","service":"soilwise-ai","timestamp":"2025-07-10T22:43:30.460Z"}
+{"level":"info","message":"AI Advisory Engine initialized successfully","service":"soilwise-ai","timestamp":"2025-07-10T22:43:30.460Z"}
+{"level":"info","message":"Advisory engine started","service":"soilwise-ai","timestamp":"2025-07-10T22:43:30.461Z"}
+{"level":"info","message":"AI Services started successfully on development mode","service":"soilwise-ai","timestamp":"2025-07-10T22:43:30.461Z"}
+{"level":"info","message":"AI Services initialized","service":"soilwise-ai","timestamp":"2025-07-10T23:04:13.998Z"}
+{"level":"warn","message":"ChromaDB not available, running without vector store:","service":"soilwise-ai","timestamp":"2025-07-10T23:04:14.066Z"}
+{"level":"info","message":"Loaded 3 knowledge base documents","service":"soilwise-ai","timestamp":"2025-07-10T23:04:14.068Z"}
+{"level":"info","message":"AI Advisory Engine initialized successfully","service":"soilwise-ai","timestamp":"2025-07-10T23:04:14.068Z"}
+{"level":"info","message":"Advisory engine started","service":"soilwise-ai","timestamp":"2025-07-10T23:04:14.068Z"}
+{"level":"info","message":"AI Services started successfully on development mode","service":"soilwise-ai","timestamp":"2025-07-10T23:04:14.069Z"}
+{"level":"info","message":"AI Services initialized","service":"soilwise-ai","timestamp":"2025-07-10T23:17:03.985Z"}
+{"level":"warn","message":"ChromaDB not available, running without vector store:","service":"soilwise-ai","timestamp":"2025-07-10T23:17:04.093Z"}
+{"level":"info","message":"Loaded 3 knowledge base documents","service":"soilwise-ai","timestamp":"2025-07-10T23:17:04.095Z"}
+{"level":"info","message":"AI Advisory Engine initialized successfully","service":"soilwise-ai","timestamp":"2025-07-10T23:17:04.095Z"}
+{"level":"info","message":"Advisory engine started","service":"soilwise-ai","timestamp":"2025-07-10T23:17:04.095Z"}
+{"level":"info","message":"AI Services started successfully on development mode","service":"soilwise-ai","timestamp":"2025-07-10T23:17:04.096Z"}

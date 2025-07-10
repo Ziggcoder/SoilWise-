@@ -11,11 +11,12 @@ class VoiceAssistantService {
       sttModel: process.env.WHISPER_MODEL_PATH || './models/whisper',
       ttsModel: process.env.COQUI_MODEL_PATH || './models/coqui',
       language: 'en',
-      voiceId: undefined,
       maxRecordingTime: 30000, // 30 seconds
       silenceThreshold: 0.01,
       enableWakeWord: false,
-      wakeWord: 'soilwise'
+      wakeWord: 'soilwise',
+      sampleRate: 16000, // Added value: audio sample rate in Hz
+      logLevel: 'info'   // Added value: logging level
     }
     
     this.voiceAssistant = new VoiceAssistant(config)

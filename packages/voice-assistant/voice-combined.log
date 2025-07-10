@@ -1,0 +1,18 @@
+{"enableWakeWord":false,"language":"en","level":"info","message":"VoiceAssistant initialized with config:","service":"soilwise-voice","timestamp":"2025-07-10T23:03:52.829Z","wakeWord":"soilwise"}
+{"level":"info","message":"Voice Assistant Service initialized","service":"soilwise-voice","timestamp":"2025-07-10T23:03:52.833Z"}
+{"level":"info","message":"Initializing Voice Assistant components...","service":"soilwise-voice","timestamp":"2025-07-10T23:03:52.834Z"}
+{"level":"info","message":"Voice Assistant initialized successfully","service":"soilwise-voice","timestamp":"2025-07-10T23:03:52.837Z"}
+{"level":"info","message":"Voice Assistant started","service":"soilwise-voice","timestamp":"2025-07-10T23:03:52.838Z"}
+{"level":"info","message":"Voice Assistant Service started successfully on development mode","service":"soilwise-voice","timestamp":"2025-07-10T23:03:52.838Z"}
+{"enableWakeWord":false,"language":"en","level":"info","message":"VoiceAssistant initialized with config:","service":"soilwise-voice","timestamp":"2025-07-10T23:04:12.682Z","wakeWord":"soilwise"}
+{"level":"info","message":"Voice Assistant Service initialized","service":"soilwise-voice","timestamp":"2025-07-10T23:04:12.686Z"}
+{"level":"info","message":"Initializing Voice Assistant components...","service":"soilwise-voice","timestamp":"2025-07-10T23:04:12.687Z"}
+{"level":"info","message":"Voice Assistant initialized successfully","service":"soilwise-voice","timestamp":"2025-07-10T23:04:12.690Z"}
+{"level":"info","message":"Voice Assistant started","service":"soilwise-voice","timestamp":"2025-07-10T23:04:12.690Z"}
+{"level":"info","message":"Voice Assistant Service started successfully on development mode","service":"soilwise-voice","timestamp":"2025-07-10T23:04:12.691Z"}
+{"enableWakeWord":false,"language":"en","level":"info","message":"VoiceAssistant initialized with config:","service":"soilwise-voice","timestamp":"2025-07-10T23:17:02.431Z","wakeWord":"soilwise"}
+{"level":"info","message":"Voice Assistant Service initialized","service":"soilwise-voice","timestamp":"2025-07-10T23:17:02.437Z"}
+{"level":"info","message":"Initializing Voice Assistant components...","service":"soilwise-voice","timestamp":"2025-07-10T23:17:02.437Z"}
+{"level":"info","message":"Voice Assistant initialized successfully","service":"soilwise-voice","timestamp":"2025-07-10T23:17:02.440Z"}
+{"level":"info","message":"Voice Assistant started","service":"soilwise-voice","timestamp":"2025-07-10T23:17:02.441Z"}
+{"level":"info","message":"Voice Assistant Service started successfully on development mode","service":"soilwise-voice","timestamp":"2025-07-10T23:17:02.442Z"}

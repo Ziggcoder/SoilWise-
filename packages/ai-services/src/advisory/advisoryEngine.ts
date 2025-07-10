@@ -52,8 +52,8 @@ export interface Recommendation {
 
 export class AIAdvisoryEngine {
   private llm: ChatOllama
-  private vectorStore: Chroma
-  private qaChain: RetrievalQAChain
+  private vectorStore: Chroma | null = null
+  private qaChain: RetrievalQAChain | null = null
   private textSplitter: RecursiveCharacterTextSplitter
   private knowledgeBase: Document[]
   private isInitialized = false
@@ -63,7 +63,7 @@ export class AIAdvisoryEngine {
       baseUrl: process.env.OLLAMA_BASE_URL || 'http://localhost:11434',
       model: process.env.OLLAMA_MODEL || 'llama3',
       temperature: 0.1,
-      maxTokens: 1000,
+      // maxTokens: 1000,  // Remove this, it's not a valid property
     })
 
     this.textSplitter = new RecursiveCharacterTextSplitter({
@@ -74,25 +74,50 @@ export class AIAdvisoryEngine {
     this.knowledgeBase = []
   }
 
+  private async queryWithChain(query: string): Promise<{ text: string }> {
+    if (this.qaChain) {
+      const result = await this.qaChain.call({ query })
+      return { text: result.text || result.output || 'No response' }
+    } else {
+      // Fallback to direct LLM call if qaChain is not available
+      const result = await this.llm.invoke(query)
+      return { text: result.content as string }
+    }
+  }
+
   async initialize() {
     try {
-      // Initialize vector store
-      this.vectorStore = await Chroma.fromExistingCollection(
-        new OpenAIEmbeddings({
-          openAIApiKey: process.env.OPENAI_API_KEY || 'dummy-key',
-          modelName: 'text-embedding-ada-002',
-        }),
-        {
-          collectionName: 'agriculture_knowledge',
-          url: process.env.CHROMADB_URL || 'http://localhost:8000',
-        }
-      )
+      // Try to initialize vector store, but don't fail if ChromaDB is not available
+      try {
+        this.vectorStore = await Chroma.fromExistingCollection(
+          new OpenAIEmbeddings({
+            openAIApiKey: process.env.OPENAI_API_KEY || 'dummy-key',
+            modelName: 'text-embedding-ada-002',
+          }),
+          {
+            collectionName: 'agriculture_knowledge',
+            url: process.env.CHROMADB_URL || 'http://localhost:8000',
+          }
+        )
+        logger.info('ChromaDB vector store initialized successfully')
+      } catch (error) {
+        logger.warn('ChromaDB not available, running without vector store:', error instanceof Error ? error.message : String(error))
+        this.vectorStore = null
+      }
 
-      // Create retrieval chain
-      this.qaChain = RetrievalQAChain.fromLLM(
-        this.llm,
-        this.vectorStore.asRetriever()
-      )
+      // Create retrieval chain if vector store is available
+      if (this.vectorStore) {
+        try {
+          this.qaChain = RetrievalQAChain.fromLLM(
+            this.llm as any,  // Cast to any to avoid type issues
+            this.vectorStore.asRetriever() as any  // Cast to any to avoid type issues
+          )
+          logger.info('QA chain initialized successfully')
+        } catch (error) {
+          logger.warn('Failed to create retrieval chain, will use direct LLM calls:', error instanceof Error ? error.message : String(error))
+          this.qaChain = null
+        }
+      }
 
       // Load knowledge base
       await this.loadKnowledgeBase()
@@ -184,7 +209,9 @@ export class AIAdvisoryEngine {
     }
 
     // Add documents to vector store
-    await this.vectorStore.addDocuments(this.knowledgeBase)
+    if (this.vectorStore) {
+      await this.vectorStore.addDocuments(this.knowledgeBase)
+    }
     logger.info(`Loaded ${this.knowledgeBase.length} knowledge base documents`)
   }
 
@@ -227,7 +254,7 @@ export class AIAdvisoryEngine {
     `
 
     try {
-      const response = await this.qaChain.call({ query })
+      const response = await this.queryWithChain(query)
       
       // Parse AI response and determine priority
       const needsIrrigation = this.parseIrrigationNeed(response.text, soilMoisture)
@@ -267,7 +294,7 @@ export class AIAdvisoryEngine {
     `
 
     try {
-      const response = await this.qaChain.call({ query })
+      const response = await this.queryWithChain(query)
       
       const needsFertilization = this.parseFertilizationNeed(response.text, nutrients)
       
@@ -306,7 +333,7 @@ export class AIAdvisoryEngine {
     `
 
     try {
-      const response = await this.qaChain.call({ query })
+      const response = await this.queryWithChain(query)
       
       const needsPestControl = this.parsePestControlNeed(response.text, weather)
       
@@ -345,7 +372,7 @@ export class AIAdvisoryEngine {
     `
 
     try {
-      const response = await this.qaChain.call({ query })
+      const response = await this.queryWithChain(query)
       
       const needsHarvest = this.parseHarvestNeed(response.text, crops)
       

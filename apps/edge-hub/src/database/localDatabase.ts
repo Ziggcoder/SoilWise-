@@ -33,10 +33,10 @@ export class LocalDatabase {
   private _isConnected = false
 
   constructor() {
-    this.initialize()
+    // Don't auto-initialize, let the caller do it
   }
 
-  private async initialize(): Promise<void> {
+  async initialize(): Promise<void> {
     try {
       this.knex = Knex({
         client: 'sqlite3',

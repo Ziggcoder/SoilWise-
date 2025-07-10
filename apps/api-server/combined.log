@@ -235,3 +235,325 @@
 {"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T21:54:01.910Z"}
 {"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T21:54:01.911Z"}
 {"level":"info","message":"SIGINT received, shutting down gracefully","service":"soilwise-api","timestamp":"2025-07-10T21:54:02.662Z"}
+{"level":"info","message":"Initializing in-memory database (placeholder)","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.775Z"}
+{"level":"info","message":"Database initialized","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.779Z"}
+{"level":"info","message":"Setting up Socket.IO server","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.779Z"}
+{"level":"info","message":"Socket.IO configured","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.780Z"}
+{"level":"info","message":"MQTT service connected","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.887Z"}
+{"level":"info","message":"Starting cron jobs","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.888Z"}
+{"level":"info","message":"Cron jobs started successfully","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.891Z"}
+{"level":"info","message":"Cron jobs started","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.892Z"}
+{"level":"info","message":"Server running on port 8081","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.895Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:13.905Z"}
+{"level":"warn","message":"MQTT client offline","service":"soilwise-api","timestamp":"2025-07-10T23:04:13.906Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:14.909Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:14.911Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:15.912Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:15.914Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:16.916Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:16.917Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:17.918Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:17.920Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:18.922Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:18.924Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:19.925Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:19.927Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:20.928Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:20.930Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:21.931Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:21.933Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:22.934Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:22.936Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:23.938Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:23.939Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:24.941Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:24.943Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:25.943Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:25.945Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:26.947Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:26.949Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:27.950Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:27.952Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:28.953Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:28.955Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:29.956Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:29.958Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:30.959Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:30.960Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:31.961Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:31.963Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:32.964Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:32.965Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:33.966Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:33.968Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:34.970Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:34.971Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:35.973Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:35.975Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:36.976Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:36.977Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:37.977Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:37.979Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:38.979Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:38.981Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:40.043Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:40.058Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:41.084Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:41.109Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:42.160Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:42.185Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:43.195Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:43.202Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:44.216Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:44.229Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:45.243Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:45.282Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:46.305Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:46.328Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:47.367Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:47.411Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:48.488Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:48.509Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:49.543Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:49.559Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:50.560Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:50.562Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:51.563Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:51.564Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:52.564Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:52.566Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:53.565Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:53.567Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:54.569Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:54.571Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:55.572Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:55.573Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:56.574Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:56.576Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:04:57.577Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:04:57.578Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"soilwise-api","timestamp":"2025-07-10T23:04:57.894Z"}
+{"level":"info","message":"Initializing in-memory database (placeholder)","service":"soilwise-api","timestamp":"2025-07-10T23:17:03.859Z"}
+{"level":"info","message":"Database initialized","service":"soilwise-api","timestamp":"2025-07-10T23:17:03.868Z"}
+{"level":"info","message":"Setting up Socket.IO server","service":"soilwise-api","timestamp":"2025-07-10T23:17:03.870Z"}
+{"level":"info","message":"Socket.IO configured","service":"soilwise-api","timestamp":"2025-07-10T23:17:03.870Z"}
+{"level":"info","message":"MQTT service connected","service":"soilwise-api","timestamp":"2025-07-10T23:17:04.029Z"}
+{"level":"info","message":"Starting cron jobs","service":"soilwise-api","timestamp":"2025-07-10T23:17:04.030Z"}
+{"level":"info","message":"Cron jobs started successfully","service":"soilwise-api","timestamp":"2025-07-10T23:17:04.037Z"}
+{"level":"info","message":"Cron jobs started","service":"soilwise-api","timestamp":"2025-07-10T23:17:04.038Z"}
+{"level":"info","message":"Server running on port 8081","service":"soilwise-api","timestamp":"2025-07-10T23:17:04.041Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:04.052Z"}
+{"level":"warn","message":"MQTT client offline","service":"soilwise-api","timestamp":"2025-07-10T23:17:04.053Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:05.055Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:05.056Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:06.060Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:06.062Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:07.062Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:07.064Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:08.065Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:08.066Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:09.067Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:09.070Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:10.070Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:10.072Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:11.073Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:11.075Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:12.077Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:12.079Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:13.080Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:13.082Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:14.083Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:14.085Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:15.087Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:15.088Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:16.089Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:16.092Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:17.092Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:17.094Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:18.094Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:18.096Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:19.096Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:19.098Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:20.100Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:20.102Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:21.103Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:21.106Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:22.106Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:22.107Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:23.109Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:23.111Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:24.113Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:24.115Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:25.116Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:25.117Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:26.118Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:26.120Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:27.121Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:27.123Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:28.125Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:28.127Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:29.128Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:29.130Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:30.131Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:30.133Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:31.134Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:31.136Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:32.136Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:32.138Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:33.139Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:33.140Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:34.143Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:34.144Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:35.146Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:35.147Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:36.149Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:36.150Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:37.150Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:37.152Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:38.153Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:38.154Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:39.156Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:39.158Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:40.159Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:40.161Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:41.161Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:41.163Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:42.172Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:42.176Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:43.177Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:43.178Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:44.181Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:44.183Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:45.184Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:45.186Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:46.188Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:46.190Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:47.190Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:47.192Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:48.192Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:48.194Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:49.195Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:49.197Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:50.198Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:50.200Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:51.201Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:51.203Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:52.203Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:52.204Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:53.205Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:53.207Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:54.208Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:54.210Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:55.212Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:55.213Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:56.214Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:56.216Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:57.217Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:57.218Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:58.218Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:58.219Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:17:59.220Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:17:59.221Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:00.222Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:00.223Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:01.247Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:01.249Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:02.249Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:02.251Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:03.251Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:03.252Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:04.254Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:04.256Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:05.257Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:05.259Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:06.261Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:06.262Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:07.262Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:07.264Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:08.265Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:08.266Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:09.267Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:09.268Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:10.269Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:10.270Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:11.272Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:11.274Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:12.275Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:12.277Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:13.278Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:13.280Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:14.280Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:14.282Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:15.282Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:15.284Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:16.285Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:16.286Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:17.287Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:17.290Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:18.289Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:18.291Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:19.292Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:19.294Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:20.294Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:20.295Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:21.296Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:21.298Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:22.298Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:22.300Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:23.300Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:23.302Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:24.304Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:24.306Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:25.308Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:25.310Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:26.311Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:26.313Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:27.314Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:27.315Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:28.316Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:28.318Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:29.319Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:29.320Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:30.322Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:30.324Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:31.324Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:31.327Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:32.330Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:32.332Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:33.334Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:33.336Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:34.335Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:34.337Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:35.338Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:35.339Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:36.339Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:36.341Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:37.342Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:37.344Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:38.346Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:38.348Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:39.350Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:39.352Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:40.354Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:40.356Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:41.357Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:41.359Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:42.360Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:42.362Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:43.362Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:43.364Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:44.364Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:44.366Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:45.367Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:45.369Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:46.369Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:46.371Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:47.370Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:47.372Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:48.374Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:48.375Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:49.377Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:49.379Z"}
+{"level":"info","message":"MQTT client reconnecting","service":"soilwise-api","timestamp":"2025-07-10T23:18:50.380Z"}
+{"code":"ECONNREFUSED","level":"error","message":"MQTT client error:","service":"soilwise-api","stack":"AggregateError\n    at internalConnectMultiple (node:net:1122:18)\n    at afterConnectMultiple (node:net:1689:7)","timestamp":"2025-07-10T23:18:50.382Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"soilwise-api","timestamp":"2025-07-10T23:18:51.322Z"}

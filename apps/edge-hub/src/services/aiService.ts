@@ -19,6 +19,7 @@ export class AIService {
   private baseUrl: string
   private apiKey: string | undefined
   private isConnected = false
+  public isReady = false
 
   constructor() {
     this.baseUrl = process.env.AI_SERVICE_URL || 'http://localhost:8082'
@@ -28,8 +29,10 @@ export class AIService {
   async initialize(): Promise<void> {
     try {
       await this.checkConnection()
+      this.isReady = true
       logger.info('AI Service initialized successfully')
     } catch (error) {
+      this.isReady = false
       logger.error('Failed to initialize AI Service:', error)
       throw error
     }
@@ -289,6 +292,11 @@ export class AIService {
 
   async shutdown(): Promise<void> {
     this.isConnected = false
+    this.isReady = false
     logger.info('AI Service shutdown')
+  }
+
+  async cleanup(): Promise<void> {
+    await this.shutdown()
   }
 }

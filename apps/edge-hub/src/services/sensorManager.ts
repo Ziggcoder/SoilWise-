@@ -18,6 +18,7 @@ export class SensorManager {
   private database: LocalDatabase
   private serialPorts: Map<string, SerialPort> = new Map()
   private isRunning = false
+  private eventEmitter = new (require('events').EventEmitter)()
 
   constructor(database: LocalDatabase) {
     this.database = database
@@ -127,10 +128,10 @@ export class SensorManager {
       }
 
       return {
-        sensorId: parts[0],
+        sensorId: parts[0]!,
         type: parts[1] as any,
-        value: parseFloat(parts[2]),
-        unit: parts[3],
+        value: parseFloat(parts[2]!),
+        unit: parts[3]!,
         timestamp: new Date()
       }
     } catch (error) {
@@ -143,6 +144,9 @@ export class SensorManager {
     try {
       await this.database.insertSensorData(data)
       logger.debug(`Stored sensor data: ${data.sensorId} = ${data.value}${data.unit}`)
+      
+      // Emit event for new sensor data
+      this.eventEmitter.emit('sensorData', data)
     } catch (error) {
       logger.error('Error storing sensor data:', error)
     }
@@ -171,5 +175,17 @@ export class SensorManager {
   async getLatestSensorData(sensorId: string): Promise<SensorData | null> {
     const data = await this.database.getSensorData(sensorId, 1)
     return data[0] || null
+  }
+
+  initialize(): Promise<void> {
+    return this.start()
+  }
+
+  on(event: string, callback: (...args: any[]) => void): void {
+    this.eventEmitter.on(event, callback)
+  }
+
+  cleanup(): Promise<void> {
+    return this.stop()
   }
 }

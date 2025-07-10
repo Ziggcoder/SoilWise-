@@ -6,7 +6,7 @@ import { SensorData } from './sensorManager'
 export class MQTTService {
   private client: mqtt.MqttClient | null = null
   private database: LocalDatabase
-  private isConnected = false
+  public isConnected = false
   private reconnectInterval: NodeJS.Timeout | null = null
 
   constructor(database: LocalDatabase) {
@@ -223,6 +223,41 @@ export class MQTTService {
       logger.info(`Published alert: ${alert.type}`)
     } catch (error) {
       logger.error('Error publishing alert:', error)
+    }
+  }
+
+  // Add publish method
+  publish(topic: string, message: string | Buffer): void {
+    if (!this.client || !this.isConnected) {
+      logger.warn('Cannot publish: MQTT client not connected')
+      return
+    }
+
+    this.client.publish(topic, message, (err) => {
+      if (err) {
+        logger.error(`Failed to publish to topic ${topic}:`, err)
+      } else {
+        logger.debug(`Published to topic ${topic}`)
+      }
+    })
+  }
+
+  // Add on method for event handling
+  on(event: string, callback: (...args: any[]) => void): void {
+    if (!this.client) {
+      logger.warn('Cannot add listener: MQTT client not initialized')
+      return
+    }
+
+    // Handle specific MQTT events
+    if (event === 'message') {
+      this.client.on('message', callback)
+    } else if (event === 'connect') {
+      this.client.on('connect', callback)
+    } else if (event === 'error') {
+      this.client.on('error', callback)
+    } else {
+      logger.warn(`Unsupported event type: ${event}`)
     }
   }
 

@@ -25,12 +25,13 @@ export class SyncService {
   private status: SyncStatus
   private syncInterval: NodeJS.Timeout | null = null
   private isRunning = false
+  public isOnline = false
 
   constructor(database: LocalDatabase, config?: Partial<SyncConfig>) {
     this.database = database
     this.config = {
       cloudEndpoint: process.env.CLOUD_SYNC_ENDPOINT || 'https://api.soilwise.com',
-      apiKey: process.env.CLOUD_API_KEY,
+      apiKey: process.env.CLOUD_API_KEY || undefined,
       syncInterval: 300000, // 5 minutes
       batchSize: 100,
       retryAttempts: 3,
