@@ -68,7 +68,15 @@ class MQTTService {
 
   private handleMessage(topic: string, payload: Buffer): void {
     try {
-      const message = JSON.parse(payload.toString())
+      let payloadString = payload.toString().trim()
+      
+      // Remove surrounding quotes if present (common issue with command-line tools)
+      if ((payloadString.startsWith('"') && payloadString.endsWith('"')) ||
+          (payloadString.startsWith("'") && payloadString.endsWith("'"))) {
+        payloadString = payloadString.slice(1, -1)
+      }
+      
+      const message = JSON.parse(payloadString)
       logger.debug('Received MQTT message:', { topic, message })
 
       // TODO: Process different message types
@@ -80,10 +88,31 @@ class MQTTService {
         this.handleSystemMessage(topic, message)
       }
     } catch (error) {
-      logger.error('Failed to process MQTT message:', { topic, error })
+      const payloadString = payload.toString()
+      logger.error('Failed to parse MQTT message:', { 
+        topic, 
+        payload: payloadString,
+        payloadBuffer: payload,
+        error: error instanceof Error ? error.message : error 
+      })
+      
+      // Try to handle non-JSON messages gracefully
+      this.handleNonJsonMessage(topic, payloadString)
     }
   }
-
+  private handleNonJsonMessage(topic: string, payload: string): void {
+    logger.warn('Received non-JSON MQTT message:', { topic, payload })
+    
+    // Handle simple string messages based on topic
+    if (topic.startsWith('system/health')) {
+      // Handle simple health status messages
+      if (payload.toLowerCase().includes('true') || payload.toLowerCase().includes('healthy')) {
+        this.handleSystemMessage(topic, { status: 'healthy', timestamp: new Date().toISOString() })
+      } else if (payload.toLowerCase().includes('false') || payload.toLowerCase().includes('unhealthy')) {
+        this.handleSystemMessage(topic, { status: 'unhealthy', timestamp: new Date().toISOString() })
+      }
+    }
+  }
   private handleSensorMessage(topic: string, message: any): void {
     // TODO: Implement sensor message processing
     logger.info('Processing sensor message:', { topic, sensorId: message.sensorId })

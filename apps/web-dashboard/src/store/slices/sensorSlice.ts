@@ -60,7 +60,8 @@ export const fetchSensorReadings = createAsyncThunk(
   'sensors/fetchReadings',
   async ({ sensorId, timeRange }: { sensorId: string; timeRange: string }) => {
     const response = await fetch(`/api/sensors/${sensorId}/readings?range=${timeRange}`)
-    return { sensorId, readings: await response.json() }
+    const readings = await response.json()
+    return { sensorId, readings }
   }
 )
 

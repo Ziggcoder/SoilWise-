@@ -12,7 +12,7 @@ import './App.css'
 
 function App() {
   const dispatch = useDispatch()
-  const { isConnected, error } = useMqttConnection()
+  useMqttConnection() // Initialize MQTT connection
 
   useEffect(() => {
     dispatch(initializeApp())

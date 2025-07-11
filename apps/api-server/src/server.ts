@@ -31,7 +31,7 @@ const io = new Server(server, {
   }
 })
 
-const PORT = process.env.PORT || 8081
+const PORT = process.env.PORT || 9171
 
 // Middleware
 app.use(helmet())
@@ -74,11 +74,11 @@ async function startServer() {
 
     // Start MQTT service
     await mqttService.connect()
-    logger.info('MQTT service connected')
+    // logger.info('MQTT service connected')
 
     // Start cron jobs
-    startCronJobs()
-    logger.info('Cron jobs started')
+    // startCronJobs()
+    // logger.info('Cron jobs started')
 
     // Start server
     server.listen(PORT, () => {

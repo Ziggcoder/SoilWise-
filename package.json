@@ -19,6 +19,8 @@
     "lint": "npm run lint --workspaces",
     "clean": "npm run clean --workspaces",
     "install:all": "npm install --workspaces",
+    "validate-env": "node validate-env.js",
+    "setup": "bash setup.sh",
     "turbo:build": "turbo run build",
     "turbo:dev": "turbo run dev",
     "turbo:test": "turbo run test",
@@ -42,7 +44,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.6.1"
   },
   "engines": {
     "node": ">=18.0.0",

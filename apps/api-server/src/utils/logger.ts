@@ -3,11 +3,11 @@ import { createLogger, format, transports } from 'winston'
 export const logger = createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: format.combine(
-    format.timestamp(),
+    // format.timestamp(),
     format.errors({ stack: true }),
     format.json()
   ),
-  defaultMeta: { service: 'soilwise-api' },
+  // defaultMeta: { service: 'soilwise-api' },
   transports: [
     new transports.File({ filename: 'error.log', level: 'error' }),
     new transports.File({ filename: 'combined.log' }),
