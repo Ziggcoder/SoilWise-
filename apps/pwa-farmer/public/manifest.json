@@ -1,0 +1,125 @@
+{
+  "name": "SoilWise Farmer",
+  "short_name": "SoilWise",
+  "description": "Offline-first farming assistant for smart agriculture",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["productivity", "business", "utilities"],
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard overview"
+    },
+    {
+      "src": "/screenshots/mobile-dashboard.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile dashboard"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Fields",
+      "short_name": "Fields",
+      "description": "Manage your fields",
+      "url": "/fields",
+      "icons": [
+        {
+          "src": "/icons/shortcut-fields.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Sensors",
+      "short_name": "Sensors",
+      "description": "View sensor data",
+      "url": "/sensors",
+      "icons": [
+        {
+          "src": "/icons/shortcut-sensors.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Photos",
+      "short_name": "Photos",
+      "description": "Field photos",
+      "url": "/photos",
+      "icons": [
+        {
+          "src": "/icons/shortcut-photos.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "features": [
+    "offline-support",
+    "background-sync",
+    "push-notifications",
+    "camera-access",
+    "geolocation",
+    "microphone-access"
+  ]
+}

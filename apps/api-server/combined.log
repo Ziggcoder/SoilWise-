@@ -2396,3 +2396,4 @@
 {"level":"info","message":"Subscribed to topic:","topic":"sensors/+/status"}
 {"level":"info","message":"Subscribed to topic:","topic":"alerts/+"}
 {"level":"info","message":"Subscribed to topic:","topic":"system/health"}
+{"level":"info","message":"SIGINT received, shutting down gracefully"}
