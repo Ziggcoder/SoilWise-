@@ -1,77 +1,255 @@
-# SoilWise - Agriculture SaaS Platform
+# SoilWise - Smart Agriculture Platform
 
-## 🌾 Platform Overview
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-blue)](https://www.typescriptlang.org/)
 
-SoilWise is a comprehensive agriculture SaaS platform that combines IoT sensor monitoring, offline-first PWA capabilities, voice-enabled AI assistance, and intelligent advisory services. Designed for rural deployment with Raspberry Pi-based local inference.
+## 🌾 Overview
 
-## 🏗️ System Architecture
+SoilWise is an **offline-first agriculture SaaS platform** that combines IoT sensor monitoring, AI-powered crop advisory, and voice-enabled assistance. Built for rural deployment with Raspberry Pi-based edge computing and local LLM inference.
 
-### Core Components
+### � Key Features
 
-1. **IoT Sensor Dashboard** (React + MQTT)
-2. **Offline-First PWA** (SQLite + Node.js)
-3. **Voice-Enabled Chatbot** (Whisper + Coqui + Ollama LLaMA3)
-4. **AI Advisory Engine** (LangChain + Vector DB)
-5. **Edge Computing Hub** (Raspberry Pi)
+- **📊 Real-time IoT Monitoring** - Soil moisture, temperature, pH, nutrients
+- **🤖 AI-Powered Advisory** - Crop recommendations, disease detection, yield optimization
+- **🎙️ Voice Assistant** - Offline speech recognition and synthesis
+- **📱 Offline-First PWA** - Works without internet connectivity
+- **🔄 Edge Computing** - Local processing on Raspberry Pi
+- **☁️ Cloud Sync** - Hybrid local/cloud data architecture
 
-### Technology Stack
+## 🏗️ Architecture
 
-- **Frontend**: React 18, TypeScript, Tailwind CSS, PWA
-- **Backend**: Node.js, Express, Socket.io, MQTT
-- **Database**: SQLite (local), PostgreSQL (cloud), ChromaDB (vector)
-- **AI/ML**: Ollama LLaMA3, Whisper, Coqui TTS, LangChain
-- **IoT**: MQTT, LoRaWAN, Zigbee
-- **Deployment**: Docker, Raspberry Pi OS
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        Cloud Services                          │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
+│  │   Web Dashboard │  │   API Gateway   │  │   Data Lake     │ │
+│  │   (React SPA)   │  │   (Node.js)     │  │   (PostgreSQL)  │ │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+                                │ MQTT/HTTP
+┌─────────────────────────────────────────────────────────────────┐
+│                    Edge Computing Hub                          │
+│                   (Raspberry Pi 4B+)                           │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
+│  │   PWA Server    │  │   AI Engine     │  │   Voice Agent   │ │
+│  │   (Node.js)     │  │   (Ollama)      │  │   (Whisper)     │ │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘ │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
+│  │   Local DB      │  │   Vector DB     │  │   MQTT Client   │ │
+│  │   (SQLite)      │  │   (ChromaDB)    │  │   (Node.js)     │ │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+          ┌─────────────────────┴─────────────────────┐
+          │                                           │
+    ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐
+    │  Soil   │  │  Temp/  │  │   pH    │  │ Camera  │
+    │ Sensor  │  │ Humid   │  │ Sensor  │  │ Module  │
+    └─────────┘  └─────────┘  └─────────┘  └─────────┘
+```
 
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js** 18.0.0 or higher
+- **npm** 8.0.0 or higher
+- **Git**
+
+### Installation
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/your-org/soilwise.git
+cd soilwise
+```
+
+2. **Install dependencies:**
+```bash
+npm install
+```
+
+3. **Setup environment variables:**
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+4. **Start development servers:**
+```bash
+npm run dev
+```
+
+### 🌐 Access Points
+
+Once running, access the services at:
+
+- **Web Dashboard**: http://localhost:3005
+- **PWA Farmer App**: http://localhost:5179
+- **API Server**: http://localhost:8081
+- **Edge Hub**: http://localhost:3002
+
+### � Quick Development Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start all services in development mode |
+| `npm run build` | Build all applications |
+| `npm run test` | Run all tests |
+| `npm run lint` | Lint all packages |
+| `npm run docker:up` | Start with Docker Compose |
+- Voice assistant implementation
 ## 📁 Project Structure
 
 ```
 soilwise/
-├── apps/
-│   ├── web-dashboard/          # React dashboard
-│   ├── pwa-farmer/            # Offline-first PWA
-│   ├── api-server/            # Node.js API
-│   └── edge-hub/              # Raspberry Pi edge computing
-├── packages/
-│   ├── shared/                # Shared utilities
-│   ├── iot-client/            # IoT communication
-│   ├── ai-services/           # AI/ML services
-│   └── voice-assistant/       # Voice processing
-├── hardware/
-│   ├── sensors/               # IoT sensor configs
-│   ├── gateway/               # LoRaWAN gateway
-│   └── deployment/            # Hardware deployment
-└── docs/
-    ├── architecture/          # System architecture
-    ├── deployment/            # Deployment guides
-    └── monetization/          # Business model
+├── apps/                           # Main applications
+│   ├── web-dashboard/             # React dashboard (Cloud UI)
+│   ├── pwa-farmer/               # Offline-first PWA (Mobile)
+│   ├── api-server/               # Node.js API server (Cloud)
+│   └── edge-hub/                 # Raspberry Pi edge computing
+├── packages/                      # Shared packages
+│   ├── ai-services/              # AI/ML services (LangChain, ChromaDB)
+│   └── voice-assistant/          # Voice processing (Whisper, Coqui TTS)
+├── docs/                         # Documentation
+│   ├── architecture/             # System architecture docs
+│   ├── deployment/              # Deployment guides
+│   └── api/                     # API documentation
+├── scripts/                      # Setup and deployment scripts
+└── docker/                       # Docker configurations
 ```
 
-## 🚀 Key Features
+## 🔧 Technology Stack
 
-### 1. IoT Sensor Dashboard
-- Real-time monitoring of soil moisture, temperature, pH, nutrients
-- Historical data visualization and analytics
-- Alert system for critical conditions
-- Multi-farm management
+### Frontend
+- **React 18** - Modern UI framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first styling
+- **PWA** - Offline-first mobile app
+- **Vite** - Fast build tool
 
-### 2. Offline-First PWA
-- Works without internet connectivity
-- Local SQLite database synchronization
-- Field data collection and management
-- Photo and note capturing
+### Backend
+- **Node.js** - Server runtime
+- **Express** - Web framework
+- **Socket.io** - Real-time communication
+- **MQTT** - IoT messaging
+- **SQLite** - Local database
 
-### 3. Voice-Enabled Assistant
-- Voice queries in local languages
-- Spoken recommendations and alerts
-- Hands-free operation for field work
-- Offline speech processing
+### AI/ML
+- **Ollama** - Local LLM inference
+- **Whisper** - Speech recognition
+- **Coqui TTS** - Text-to-speech
+- **LangChain** - AI agent framework
+- **ChromaDB** - Vector database
 
-### 4. AI Advisory Engine
-- Crop recommendation based on soil conditions
-- Weather-based irrigation scheduling
-- Disease and pest identification
-- Yield optimization suggestions
+### IoT & Hardware
+- **Raspberry Pi 4B+** - Edge computing
+- **LoRaWAN** - Long-range communication
+- **MQTT** - Device messaging
+- **Docker** - Containerization
+
+## 🎯 Core Features
+
+### 1. 📊 IoT Sensor Dashboard
+- **Real-time monitoring** of soil conditions
+- **Historical data** visualization and analytics
+- **Alert system** for critical conditions
+- **Multi-farm management** capabilities
+
+### 2. 📱 Offline-First PWA
+- **Works without internet** connectivity
+- **Local SQLite database** synchronization
+- **Field data collection** and management
+- **Photo and note** capturing
+
+### 3. 🎙️ Voice-Enabled Assistant
+- **Voice queries** in local languages
+- **Spoken recommendations** and alerts
+- **Hands-free operation** for field work
+- **Offline speech processing**
+
+### 4. 🤖 AI Advisory Engine
+- **Crop recommendations** based on soil conditions
+- **Weather-based irrigation** scheduling
+- **Disease and pest identification**
+- **Yield optimization** suggestions
+
+## 🚀 Development
+
+### Development Commands
+
+```bash
+# Start all services
+npm run dev
+
+# Start individual services
+npm run dev:api          # API server only
+npm run dev:dashboard    # Web dashboard only
+npm run dev:pwa         # PWA farmer app only
+npm run dev:edge        # Edge hub only
+
+# Build and test
+npm run build           # Build all applications
+npm run test           # Run all tests
+npm run lint           # Lint all packages
+
+# Docker development
+npm run docker:up      # Start with Docker Compose
+npm run docker:down    # Stop Docker services
+```
+
+### Development Workflow
+
+1. **Local Development**: Use `npm run dev` for hot-reload development
+2. **Testing**: Run `npm run test` for unit and integration tests
+3. **Building**: Use `npm run build` before deployment
+4. **Linting**: Run `npm run lint` to check code quality
+
+## � Docker Deployment
+
+### Local Development
+```bash
+docker-compose up -d
+```
+
+### Raspberry Pi Deployment
+```bash
+docker-compose -f docker-compose.pi.yml up -d
+```
+
+## 📚 Documentation
+
+- **[Architecture Guide](docs/architecture/system-architecture.md)** - Detailed system architecture
+- **[Deployment Guide](docs/deployment/README.md)** - Deployment instructions
+- **[API Documentation](docs/api/README.md)** - API reference
+- **[Hardware Setup](docs/hardware/README.md)** - IoT sensor setup
+- **[Troubleshooting](docs/troubleshooting/README.md)** - Common issues and solutions
+
+## 🔒 Environment Variables
+
+Copy `.env.example` to `.env` and configure:
+
+```bash
+# Database
+DB_PATH=./data/soilwise.db
+
+# MQTT
+MQTT_BROKER_URL=mqtt://localhost:1883
+MQTT_USERNAME=your_username
+MQTT_PASSWORD=your_password
+
+# AI Services
+AI_SERVICE_URL=http://localhost:8082
+OLLAMA_API_URL=http://localhost:11434
+
+# Voice Assistant
+WHISPER_MODEL_PATH=./models/whisper
+COQUI_MODEL_PATH=./models/coqui
+
+# Cloud Services
+CLOUD_SYNC_ENDPOINT=https://api.soilwise.com
+CLOUD_API_KEY=your_api_key
+```
 
 ## 💰 Monetization Strategy
 
@@ -86,46 +264,45 @@ soilwise/
 
 ## 🛠️ Development Roadmap
 
-### Phase 1: Core Infrastructure (Months 1-2)
-- Basic IoT sensor integration
-- Web dashboard MVP
-- Local database setup
+### Phase 1: Core Infrastructure ✅
+- [x] Basic IoT sensor integration
+- [x] Web dashboard MVP
+- [x] Local database setup
+- [x] Development environment
 
-### Phase 2: Offline PWA (Months 3-4)
-- PWA development
-- Offline synchronization
-- Mobile optimization
+### Phase 2: Offline PWA (In Progress)
+- [x] PWA development
+- [ ] Offline synchronization
+- [ ] Mobile optimization
+- [ ] Camera integration
 
-### Phase 3: AI Integration (Months 5-6)
-- Voice assistant implementation
-- AI advisory engine
-- LLM integration
+### Phase 3: AI Integration (In Progress)
+- [x] Voice assistant implementation
+- [x] AI advisory engine
+- [ ] LLM integration
+- [ ] Advanced analytics
 
-### Phase 4: Production & Deployment (Months 7-8)
-- Raspberry Pi optimization
-- Field testing
-- Commercial deployment
+### Phase 4: Production & Deployment
+- [ ] Raspberry Pi optimization
+- [ ] Field testing
+- [ ] Commercial deployment
+- [ ] Performance monitoring
 
-## 🔧 Getting Started
+## 🤝 Contributing
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Setup environment variables
-4. Run development server: `npm run dev`
-
-## 📱 Deployment Options
-
-- **Cloud**: AWS, Google Cloud, Azure
-- **Edge**: Raspberry Pi 4B+ with 8GB RAM
-- **Hybrid**: Edge computing with cloud sync
-
-## 🌐 Supported Regions
-
-- North America
-- Europe
-- Asia-Pacific
-- Africa (focus on rural areas)
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
 ## 📄 License
 
-MIT License - See LICENSE file for details
+MIT License - See [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- **Documentation**: [docs/](docs/)
+- **Issues**: [GitHub Issues](https://github.com/your-org/soilwise/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-org/soilwise/discussions)
+- **Email**: support@soilwise.com
