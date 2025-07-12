@@ -129,25 +129,73 @@ export class LocalDatabase {
       table.timestamp('updated_at').defaultTo(knex.fn.now())
     })
 
+    // Create fields table
+    await knex.schema.createTable('fields', (table) => {
+      table.increments('id').primary()
+      table.string('name').notNullable()
+      table.float('area').notNullable()
+      table.string('crop_type').notNullable()
+      table.string('owner_id').notNullable()
+      table.timestamp('created_at').defaultTo(knex.fn.now())
+      table.timestamp('updated_at').defaultTo(knex.fn.now())
+      table.index(['owner_id'])
+    })
+
+    // Create observations table
+    await knex.schema.createTable('observations', (table) => {
+      table.increments('id').primary()
+      table.integer('field_id').notNullable()
+      table.string('type').notNullable()
+      table.text('description').nullable()
+      table.timestamp('timestamp').notNullable()
+      table.json('data').nullable()
+      table.timestamp('created_at').defaultTo(knex.fn.now())
+      table.timestamp('updated_at').defaultTo(knex.fn.now())
+      table.index(['field_id'])
+    })
+
+    // Create photos table
+    await knex.schema.createTable('photos', (table) => {
+      table.increments('id').primary()
+      table.integer('observation_id').notNullable()
+      table.string('url').notNullable()
+      table.string('type').notNullable()
+      table.timestamp('created_at').defaultTo(knex.fn.now())
+      table.index(['observation_id'])
+    })
+
+    // Create tasks table
+    await knex.schema.createTable('tasks', (table) => {
+      table.increments('id').primary()
+      table.string('title').notNullable()
+      table.text('description').nullable()
+      table.timestamp('due_date').nullable()
+      table.boolean('completed').defaultTo(false)
+      table.timestamp('created_at').defaultTo(knex.fn.now())
+      table.timestamp('updated_at').defaultTo(knex.fn.now())
+    })
+
     logger.info('Database tables created successfully')
   }
 
-  async insertSensorData(data: SensorData): Promise<number> {
+  async insertSensorData(data: SensorData | any): Promise<number> {
     if (!this.knex) throw new Error('Database not initialized')
 
     try {
       const [id] = await this.knex('sensor_data').insert({
-        sensor_id: data.sensorId,
+        sensor_id: data.sensorId || data.sensor_id,
         type: data.type,
         value: data.value,
         unit: data.unit,
         timestamp: data.timestamp,
         latitude: data.location?.lat,
         longitude: data.location?.lng,
-        synced: false
+        synced: false,
+        created_at: new Date(),
+        updated_at: new Date()
       })
 
-      return id
+      return id || 0
     } catch (error) {
       logger.error('Failed to insert sensor data:', error)
       throw error
@@ -175,45 +223,57 @@ export class LocalDatabase {
         value: row.value,
         unit: row.unit,
         timestamp: new Date(row.timestamp),
-        location: row.latitude && row.longitude ? {
-          lat: row.latitude,
-          lng: row.longitude
-        } : undefined
-      }))
+        ...(row.latitude && row.longitude && {
+          location: {
+            lat: row.latitude,
+            lng: row.longitude
+          }
+        })
+      })) as SensorData[]
     } catch (error) {
       logger.error('Failed to get sensor data:', error)
       throw error
     }
   }
 
+  // Cloud sync support methods
   async getUnsyncedSensorData(limit: number = 100): Promise<any[]> {
-    if (!this.knex) throw new Error('Database not initialized')
+    return this.knex!('sensor_data')
+      .whereNull('synced_at')
+      .orderBy('created_at', 'desc')
+      .limit(limit)
+  }
 
-    try {
-      const rows = await this.knex('sensor_data')
-        .select('*')
-        .where('synced', false)
-        .orderBy('timestamp', 'asc')
-        .limit(limit)
+  async getUnsyncedAlerts(limit: number = 100): Promise<any[]> {
+    return this.knex!('alerts')
+      .whereNull('synced_at')
+      .orderBy('created_at', 'desc')
+      .limit(limit)
+  }
 
-      return rows
-    } catch (error) {
-      logger.error('Failed to get unsynced sensor data:', error)
-      throw error
-    }
+  async getUnsyncedFarms(limit: number = 100): Promise<any[]> {
+    return this.knex!('farms')
+      .whereNull('synced_at')
+      .orderBy('updated_at', 'desc')
+      .limit(limit)
   }
 
   async markSensorDataSynced(ids: number[]): Promise<void> {
-    if (!this.knex) throw new Error('Database not initialized')
+    await this.knex!('sensor_data')
+      .whereIn('id', ids)
+      .update({ synced_at: new Date() })
+  }
 
-    try {
-      await this.knex('sensor_data')
-        .whereIn('id', ids)
-        .update({ synced: true })
-    } catch (error) {
-      logger.error('Failed to mark sensor data as synced:', error)
-      throw error
-    }
+  async markAlertsSynced(ids: number[]): Promise<void> {
+    await this.knex!('alerts')
+      .whereIn('id', ids)
+      .update({ synced_at: new Date() })
+  }
+
+  async markFarmsSynced(ids: number[]): Promise<void> {
+    await this.knex!('farms')
+      .whereIn('id', ids)
+      .update({ synced_at: new Date() })
   }
 
   async insertAlert(alert: Alert): Promise<number> {
@@ -231,7 +291,7 @@ export class LocalDatabase {
         synced: false
       })
 
-      return id
+      return id || 0
     } catch (error) {
       logger.error('Failed to insert alert:', error)
       throw error
@@ -264,136 +324,15 @@ export class LocalDatabase {
     }
   }
 
-  async getUnsyncedAlerts(limit: number = 100): Promise<any[]> {
-    if (!this.knex) throw new Error('Database not initialized')
-
-    try {
-      const rows = await this.knex('alerts')
-        .select('*')
-        .where('synced', false)
-        .orderBy('timestamp', 'asc')
-        .limit(limit)
-
-      return rows
-    } catch (error) {
-      logger.error('Failed to get unsynced alerts:', error)
-      throw error
-    }
-  }
-
-  async markAlertsSynced(ids: number[]): Promise<void> {
-    if (!this.knex) throw new Error('Database not initialized')
-
-    try {
-      await this.knex('alerts')
-        .whereIn('id', ids)
-        .update({ synced: true })
-    } catch (error) {
-      logger.error('Failed to mark alerts as synced:', error)
-      throw error
-    }
-  }
-
-  async insertFarm(farm: Farm): Promise<number> {
-    if (!this.knex) throw new Error('Database not initialized')
-
-    try {
-      const [id] = await this.knex('farms').insert({
-        name: farm.name,
-        latitude: farm.location.lat,
-        longitude: farm.location.lng,
-        size: farm.size,
-        crop_type: farm.cropType,
-        owner_id: farm.ownerId,
-        created: farm.created,
-        synced: false
+  async setConfiguration(key: string, value: any): Promise<void> {
+    await this.knex!('configurations')
+      .insert({
+        key,
+        value: JSON.stringify(value),
+        updated_at: new Date()
       })
-
-      return id
-    } catch (error) {
-      logger.error('Failed to insert farm:', error)
-      throw error
-    }
-  }
-
-  async getFarms(ownerId?: string): Promise<Farm[]> {
-    if (!this.knex) throw new Error('Database not initialized')
-
-    try {
-      let query = this.knex('farms').select('*')
-
-      if (ownerId) {
-        query = query.where('owner_id', ownerId)
-      }
-
-      const rows = await query
-
-      return rows.map(row => ({
-        id: row.id,
-        name: row.name,
-        location: {
-          lat: row.latitude,
-          lng: row.longitude
-        },
-        size: row.size,
-        cropType: row.crop_type,
-        ownerId: row.owner_id,
-        created: new Date(row.created),
-        synced: row.synced
-      }))
-    } catch (error) {
-      logger.error('Failed to get farms:', error)
-      throw error
-    }
-  }
-
-  async getUnsyncedFarms(limit: number = 100): Promise<any[]> {
-    if (!this.knex) throw new Error('Database not initialized')
-
-    try {
-      const rows = await this.knex('farms')
-        .select('*')
-        .where('synced', false)
-        .limit(limit)
-
-      return rows
-    } catch (error) {
-      logger.error('Failed to get unsynced farms:', error)
-      throw error
-    }
-  }
-
-  async markFarmsSynced(ids: number[]): Promise<void> {
-    if (!this.knex) throw new Error('Database not initialized')
-
-    try {
-      await this.knex('farms')
-        .whereIn('id', ids)
-        .update({ synced: true })
-    } catch (error) {
-      logger.error('Failed to mark farms as synced:', error)
-      throw error
-    }
-  }
-
-  async updateConfigurations(configurations: Record<string, any>): Promise<void> {
-    if (!this.knex) throw new Error('Database not initialized')
-
-    try {
-      for (const [key, value] of Object.entries(configurations)) {
-        await this.knex('configurations')
-          .insert({
-            key,
-            value: JSON.stringify(value),
-            updated_at: new Date()
-          })
-          .onConflict('key')
-          .merge(['value', 'updated_at'])
-      }
-    } catch (error) {
-      logger.error('Failed to update configurations:', error)
-      throw error
-    }
+      .onConflict('key')
+      .merge(['value', 'updated_at'])
   }
 
   async getConfiguration(key: string): Promise<any> {
@@ -413,41 +352,172 @@ export class LocalDatabase {
   }
 
   async getSyncStatus(): Promise<any> {
+    const result = await this.knex!('configurations')
+      .where('key', 'sync_status')
+      .first()
+    
+    return result ? JSON.parse(result.value) : null
+  }
+
+  async saveSyncStatus(status: any): Promise<void> {
+    await this.setConfiguration('sync_status', status)
+  }
+
+  async getFields(): Promise<any[]> {
     if (!this.knex) throw new Error('Database not initialized')
 
     try {
-      const row = await this.knex('sync_status')
-        .select('*')
-        .orderBy('id', 'desc')
-        .first()
-
-      return row ? {
-        lastSync: row.last_sync,
-        isSync: row.is_sync,
-        pendingItems: row.pending_items,
-        failedItems: row.failed_items,
-        totalSynced: row.total_synced
-      } : null
+      return await this.knex('fields').select('*')
     } catch (error) {
-      logger.error('Failed to get sync status:', error)
+      logger.error('Failed to get fields:', error)
       throw error
     }
   }
 
-  async saveSyncStatus(status: any): Promise<void> {
+  async getFarmsModifiedSince(since: Date): Promise<Farm[]> {
     if (!this.knex) throw new Error('Database not initialized')
 
     try {
-      await this.knex('sync_status').insert({
-        last_sync: status.lastSync,
-        is_sync: status.isSync,
-        pending_items: status.pendingItems,
-        failed_items: status.failedItems,
-        total_synced: status.totalSynced,
+      return await this.knex('farms')
+        .select('*')
+        .where('updated_at', '>', since)
+    } catch (error) {
+      logger.error('Failed to get farms modified since:', error)
+      throw error
+    }
+  }
+
+  async getFieldsModifiedSince(since: Date): Promise<any[]> {
+    if (!this.knex) throw new Error('Database not initialized')
+
+    try {
+      return await this.knex('fields')
+        .select('*')
+        .where('updated_at', '>', since)
+    } catch (error) {
+      logger.error('Failed to get fields modified since:', error)
+      throw error
+    }
+  }
+
+  async getSensorDataSince(since: Date): Promise<SensorData[]> {
+    if (!this.knex) throw new Error('Database not initialized')
+
+    try {
+      const rows = await this.knex('sensor_data')
+        .select('*')
+        .where('timestamp', '>', since)
+        .orderBy('timestamp', 'desc')
+
+      return rows.map(row => ({
+        sensorId: row.sensor_id,
+        type: row.type,
+        value: row.value,
+        unit: row.unit,
+        timestamp: new Date(row.timestamp),
+        ...(row.latitude && row.longitude ? {
+          location: {
+            lat: row.latitude,
+            lng: row.longitude
+          }
+        } : {})
+      }))
+    } catch (error) {
+      logger.error('Failed to get sensor data since:', error)
+      throw error
+    }
+  }
+
+  async getFieldById(id: number): Promise<any> {
+    if (!this.knex) throw new Error('Database not initialized')
+
+    try {
+      return await this.knex('fields')
+        .select('*')
+        .where('id', id)
+        .first()
+    } catch (error) {
+      logger.error('Failed to get field by id:', error)
+      throw error
+    }
+  }
+
+  async updateField(id: number, field: any): Promise<void> {
+    if (!this.knex) throw new Error('Database not initialized')
+
+    try {
+      await this.knex('fields')
+        .where('id', id)
+        .update({
+          ...field,
+          updated_at: new Date()
+        })
+    } catch (error) {
+      logger.error('Failed to update field:', error)
+      throw error
+    }
+  }
+
+  async insertField(field: any): Promise<number> {
+    if (!this.knex) throw new Error('Database not initialized')
+
+    try {
+      const [id] = await this.knex('fields').insert({
+        ...field,
+        created_at: new Date(),
         updated_at: new Date()
       })
+      return id || 0
     } catch (error) {
-      logger.error('Failed to save sync status:', error)
+      logger.error('Failed to insert field:', error)
+      throw error
+    }
+  }
+
+  async insertObservation(observation: any): Promise<number> {
+    if (!this.knex) throw new Error('Database not initialized')
+
+    try {
+      const [id] = await this.knex('observations').insert({
+        ...observation,
+        created_at: new Date(),
+        updated_at: new Date()
+      })
+      return id || 0
+    } catch (error) {
+      logger.error('Failed to insert observation:', error)
+      throw error
+    }
+  }
+
+  async insertPhoto(photo: any): Promise<number> {
+    if (!this.knex) throw new Error('Database not initialized')
+
+    try {
+      const [id] = await this.knex('photos').insert({
+        ...photo,
+        created_at: new Date(),
+        updated_at: new Date()
+      })
+      return id || 0
+    } catch (error) {
+      logger.error('Failed to insert photo:', error)
+      throw error
+    }
+  }
+
+  async insertTask(task: any): Promise<number> {
+    if (!this.knex) throw new Error('Database not initialized')
+
+    try {
+      const [id] = await this.knex('tasks').insert({
+        ...task,
+        created_at: new Date(),
+        updated_at: new Date()
+      })
+      return id || 0
+    } catch (error) {
+      logger.error('Failed to insert task:', error)
       throw error
     }
   }
@@ -461,7 +531,54 @@ export class LocalDatabase {
     }
   }
 
-  get isConnected(): boolean {
+  get  isConnected(): boolean {
     return this._isConnected
+  }
+
+  // Missing method implementations
+  async getFarms(ownerId?: string): Promise<any[]> {
+    try {
+      if (!this.knex) throw new Error('Database not initialized');
+      
+      let query = this.knex('farms');
+      if (ownerId) {
+        query = query.where('owner_id', ownerId);
+      }
+      return await query.select('*');
+    } catch (error) {
+      logger.error('Error getting farms:', error);
+      return [];
+    }
+  }
+
+  async insertFarm(farm: any): Promise<string> {
+    try {
+      if (!this.knex) throw new Error('Database not initialized');
+      
+      const [id] = await this.knex('farms').insert({
+        name: farm.name,
+        owner_id: farm.ownerId,
+        location: JSON.stringify(farm.location),
+        size: farm.size,
+        crop_type: farm.cropType,
+        created_at: new Date().toISOString()
+      });
+      
+      return id?.toString() || '0';
+    } catch (error) {
+      logger.error('Error inserting farm:', error);
+      throw error;
+    }
+  }
+
+  async updateConfigurations(configs: Record<string, any>): Promise<void> {
+    try {
+      for (const [key, value] of Object.entries(configs)) {
+        await this.setConfiguration(key, value);
+      }
+    } catch (error) {
+      logger.error('Error updating configurations:', error);
+      throw error;
+    }
   }
 }

@@ -188,4 +188,8 @@ export class SensorManager {
   cleanup(): Promise<void> {
     return this.stop()
   }
+
+  get isActive(): boolean {
+    return this.isRunning
+  }
 }

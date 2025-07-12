@@ -1,0 +1,188 @@
+version: '3.8'
+
+services:
+  # API Server (Cloud Backend)
+  api-server:
+    build:
+      context: ./apps/api-server
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
+      - DATABASE_URL=postgresql://soilwise:password@postgres:5432/soilwise
+      - MQTT_BROKER_URL=mqtt://mosquitto:1883
+      - JWT_SECRET=development-jwt-secret-key
+      - CORS_ORIGIN=http://localhost:5173,http://localhost:3001
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - mosquitto
+    volumes:
+      - ./apps/api-server:/app
+      - /app/node_modules
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+    command: npm run dev
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=soilwise
+      - POSTGRES_USER=soilwise
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+
+  # MQTT Broker
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    volumes:
+      - ./config/mosquitto-dev.conf:/mosquitto/config/mosquitto.conf
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+
+  # Edge Hub (Local IoT Gateway)
+  edge-hub:
+    build:
+      context: ./apps/edge-hub
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DB_PATH=/data/edge-hub.db
+      - MQTT_BROKER_URL=mqtt://mosquitto:1883
+      - CLOUD_SYNC_ENDPOINT=http://api-server:8080
+      - ENABLE_SIMULATOR=true
+      - LOG_LEVEL=debug
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mosquitto
+    volumes:
+      - ./apps/edge-hub:/app
+      - /app/node_modules
+      - edge_hub_data:/data
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+    command: npm run dev
+
+  # Web Dashboard (React SPA)
+  web-dashboard:
+    build:
+      context: ./apps/web-dashboard
+      dockerfile: Dockerfile.dev
+    environment:
+      - VITE_API_URL=http://localhost:8080
+      - VITE_EDGE_HUB_URL=http://localhost:3000
+      - VITE_WS_URL=ws://localhost:3000
+      - VITE_MQTT_URL=ws://localhost:9001
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./apps/web-dashboard:/app
+      - /app/node_modules
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+    command: npm run dev
+
+  # PWA Farmer App
+  pwa-farmer:
+    build:
+      context: ./apps/pwa-farmer
+      dockerfile: Dockerfile.dev
+    environment:
+      - REACT_APP_EDGE_HUB_URL=http://localhost:3000
+      - REACT_APP_API_URL=http://localhost:8080
+      - REACT_APP_MQTT_URL=ws://localhost:9001
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./apps/pwa-farmer:/app
+      - /app/node_modules
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+    command: npm start
+
+  # Redis (for API caching and sessions)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+
+  # MailHog (Email testing)
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
+    networks:
+      - soilwise-dev
+
+  # MinIO (File storage)
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    ports:
+      - "9000:9000"
+      - "9090:9001"
+    volumes:
+      - minio_dev_data:/data
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+
+  # Monitoring - Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./config/prometheus-dev.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+
+  # Monitoring - Grafana
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    ports:
+      - "3002:3000"
+    volumes:
+      - grafana_dev_data:/var/lib/grafana
+    networks:
+      - soilwise-dev
+    restart: unless-stopped
+
+networks:
+  soilwise-dev:
+    driver: bridge
+
+volumes:
+  postgres_dev_data:
+  edge_hub_data:
+  minio_dev_data:
+  grafana_dev_data:

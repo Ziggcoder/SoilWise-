@@ -188,24 +188,22 @@ export function setupRoutes(app: Express, services: Services): void {
   // Voice endpoints
   app.post('/voice/query', async (req, res) => {
     try {
-      if (!req.body.audioData) {
-        return res.status(400).json({
-          success: false,
-          error: 'Audio data is required'
-        })
+      const { query } = req.body;
+      if (!query) {
+        return res.status(400).json({ error: 'Query is required' });
       }
-
-      const audioData = Buffer.from(req.body.audioData, 'base64')
-      const response = await voiceService.processVoiceQuery(audioData)
-      res.json({ success: true, data: response })
+      
+      // TODO: Implement voice query processing
+      res.json({ 
+        message: 'Voice query received', 
+        query,
+        response: 'Voice processing not yet implemented' 
+      });
     } catch (error) {
-      logger.error('Error processing voice query:', error)
-      res.status(500).json({
-        success: false,
-        error: 'Failed to process voice query'
-      })
+      logger.error('Voice query error:', error);
+      res.status(500).json({ error: 'Voice query processing failed' });
     }
-  })
+  });
 
   app.get('/voice/status', (req, res) => {
     res.json({

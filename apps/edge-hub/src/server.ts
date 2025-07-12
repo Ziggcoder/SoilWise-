@@ -9,6 +9,12 @@ import { MQTTService } from './services/mqttService'
 import { AIService } from './services/aiService'
 import { VoiceService } from './services/voiceService'
 import { SyncService } from './services/syncService'
+import { CameraService } from './services/cameraService'
+import { PWASyncBridge } from './services/pwaSyncBridge'
+import { DashboardBridge } from './services/dashboardBridge'
+import { CloudBridge } from './services/cloudBridge'
+import { SystemMonitor } from './services/systemMonitor'
+import { DataSimulator } from './services/dataSimulator'
 import { LocalDatabase } from './database/localDatabase'
 import { setupRoutes } from './routes'
 
@@ -30,7 +36,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static('public'))
 
-// Services
+// Initialize core services
 const database = new LocalDatabase()
 const sensorManager = new SensorManager(database)
 const mqttService = new MQTTService(database)
@@ -38,23 +44,81 @@ const aiService = new AIService()
 const voiceService = new VoiceService(aiService)
 const syncService = new SyncService(database)
 
-// Routes
-setupRoutes(app, { database, sensorManager, aiService, voiceService, syncService })
+// Initialize integration services
+const cameraService = new CameraService()
+const pwaSyncBridge = new PWASyncBridge(database, mqttService)
+const dashboardBridge = new DashboardBridge(io, database, mqttService, sensorManager)
+const cloudBridge = new CloudBridge(database)
+const systemMonitor = new SystemMonitor(database)
+const dataSimulator = new DataSimulator()
 
-// Health check
+// Routes
+setupRoutes(app, { 
+  database, 
+  sensorManager, 
+  aiService, 
+  voiceService, 
+  syncService
+})
+
+// Health check endpoint
 app.get('/health', (req, res) => {
-  res.json({
+  const status = {
     status: 'healthy',
     timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    version: process.env.npm_package_version || '1.0.0',
     services: {
-      database: database.isConnected,
-      mqtt: mqttService.isConnected,
-      ai: aiService.isReady,
-      voice: voiceService.isReady,
-      sync: syncService.isOnline
+      database: database ? 'connected' : 'disconnected',
+      mqtt: 'connected', // TODO: Add actual MQTT status check
+      websocket: io ? 'active' : 'inactive',
+      simulator: dataSimulator ? 'running' : 'stopped'
+    },
+    system: {
+      memory: process.memoryUsage(),
+      cpu: process.cpuUsage(),
+      platform: process.platform,
+      arch: process.arch,
+      nodeVersion: process.version
     }
-  })
-})
+  };
+  
+  res.json(status);
+});
+
+// Status endpoint with detailed information
+app.get('/status', async (req, res) => {
+  try {
+    const systemInfo = await systemMonitor.getSystemInfo();
+    const status = {
+      ...systemInfo,
+      services: {
+        database: database ? 'connected' : 'disconnected',
+        mqtt: 'connected', // TODO: Add actual MQTT status check
+        websocket: io ? 'active' : 'inactive',
+        simulator: dataSimulator ? 'running' : 'stopped',
+        pwaBridge: 'active',
+        dashboardBridge: 'active',
+        cloudBridge: 'active'
+      },
+      metrics: {
+        totalSensorReadings: 0, // TODO: Get from database
+        activeFarms: 3,
+        connectedDevices: 4,
+        alertsCount: 0
+      }
+    };
+    
+    res.json(status);
+  } catch (error) {
+    logger.error('Status check failed:', error);
+    res.status(500).json({ 
+      status: 'error', 
+      message: 'Failed to get system status',
+      error: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
 
 // WebSocket connections
 io.on('connection', (socket) => {
@@ -80,88 +144,167 @@ io.on('connection', (socket) => {
   })
 })
 
-// Initialize services
-async function startEdgeHub() {
+// Service startup logic
+async function startServices(): Promise<void> {
   try {
-    // Initialize database
+    logger.info('Starting SoilWise Edge Hub services...')
+    
+    // Initialize database first
     await database.initialize()
-    logger.info('Local database initialized')
+    logger.info('Database initialized')
 
-    // Initialize sensor manager
-    await sensorManager.initialize()
-    logger.info('Sensor manager initialized')
+    // Start core services
+    await sensorManager.start()
+    logger.info('Sensor Manager started')
 
-    // Start MQTT service
     await mqttService.connect()
-    logger.info('MQTT service connected')
+    logger.info('MQTT Service connected')
 
-    // Initialize AI service
     await aiService.initialize()
-    logger.info('AI service initialized')
+    logger.info('AI Service initialized')
 
-    // Initialize voice service
     await voiceService.initialize()
-    logger.info('Voice service initialized')
+    logger.info('Voice Service initialized')
 
-    // Start sync service
     await syncService.start()
-    logger.info('Sync service started')
+    logger.info('Sync Service started')
 
-    // Setup sensor data broadcasting
-    sensorManager.on('sensorData', (data) => {
-      io.to(`sensor_${data.sensorId}`).emit('sensor_update', data)
-      mqttService.publish(`sensor/${data.sensorId}/data`, data)
-    })
+    // Start integration services
+    // Note: Camera service will be initialized when needed
+    logger.info('Camera Service ready')
 
-    // Setup MQTT message handling
-    mqttService.on('message', (topic, message) => {
-      if (topic.startsWith('sensor/')) {
-        const sensorId = topic.split('/')[1]
-        io.to(`sensor_${sensorId}`).emit('sensor_update', message)
-      }
-    })
+    await pwaSyncBridge.start()
+    logger.info('PWA Sync Bridge started')
 
-    // Start server
-    server.listen(PORT, () => {
-      logger.info(`Edge Hub running on port ${PORT}`)
-      logger.info(`Platform: ${process.platform}`)
-      logger.info(`Architecture: ${process.arch}`)
-    })
+    await dashboardBridge.start()
+    logger.info('Dashboard Bridge started')
 
+    await cloudBridge.start()
+    logger.info('Cloud Bridge started')
+
+    await systemMonitor.start()
+    logger.info('System Monitor started')
+
+    // Start data simulator for development/testing
+    if (process.env.NODE_ENV !== 'production' || process.env.ENABLE_SIMULATOR === 'true') {
+      dataSimulator.start()
+      logger.info('Data Simulator started')
+    }
+
+    // Set up service event handlers
+    setupServiceEventHandlers()
+
+    logger.info('All services started successfully')
   } catch (error) {
-    logger.error('Failed to start Edge Hub:', error)
+    logger.error('Failed to start services:', error)
     process.exit(1)
+  }
+}
+
+function setupServiceEventHandlers(): void {
+  // Forward sensor data to real-time clients
+  sensorManager.on('data', (data) => {
+    io.emit('sensor_data', data)
+  })
+
+  // Forward alerts to dashboard
+  systemMonitor.on('alert', (alert) => {
+    io.emit('system_alert', alert)
+  })
+
+  // Forward camera captures
+  cameraService.on('photo_captured', (photo) => {
+    io.emit('camera_update', photo)
+  })
+
+  // Forward simulated sensor data
+  dataSimulator.on('sensor_data', async (data) => {
+    // Store in database
+    await database.insertSensorData(data)
+    
+    // Forward to real-time clients
+    io.emit('sensor_data', data)
+    
+    // Publish to MQTT for PWA
+    mqttService.publish(`sensors/${data.farm_id}/${data.sensor_id}/data`, data)
+  })
+
+  // Forward simulated alerts
+  dataSimulator.on('alert', async (alert) => {
+    // Store in database
+    await database.insertAlert(alert)
+    
+    // Forward to dashboard
+    io.emit('system_alert', alert)
+    
+    // Publish to MQTT
+    mqttService.publish(`alerts/${alert.farm_id}`, alert)
+  })
+
+  // Forward device status updates
+  dataSimulator.on('device_status', (status) => {
+    io.emit('device_status', status)
+    mqttService.publish(`devices/${status.device_id}/status`, status)
+  })
+
+  logger.info('Service event handlers configured')
+}
+
+async function stopServices(): Promise<void> {
+  logger.info('Stopping services...')
+  
+  try {
+    dataSimulator.stop()
+    await systemMonitor.stop()
+    await cloudBridge.stop()
+    await dashboardBridge.stop()
+    await pwaSyncBridge.stop()
+    // Camera service cleanup handled automatically
+    await syncService.stop()
+    await voiceService.cleanup()
+    await aiService.cleanup()
+    await mqttService.disconnect()
+    await sensorManager.stop()
+    await database.close()
+    
+    logger.info('All services stopped')
+  } catch (error) {
+    logger.error('Error stopping services:', error)
   }
 }
 
 // Graceful shutdown
 process.on('SIGTERM', async () => {
   logger.info('SIGTERM received, shutting down gracefully')
-  await cleanupServices()
+  await stopServices()
   process.exit(0)
 })
 
 process.on('SIGINT', async () => {
   logger.info('SIGINT received, shutting down gracefully')
-  await cleanupServices()
+  await stopServices()
   process.exit(0)
 })
 
-async function cleanupServices() {
+// Start the server
+async function startServer(): Promise<void> {
   try {
-    await syncService.stop()
-    await voiceService.cleanup()
-    await aiService.cleanup()
-    await mqttService.disconnect()
-    await sensorManager.cleanup()
-    await database.close()
-    server.close()
-    logger.info('All services cleaned up')
+    // Start all services first
+    await startServices()
+    
+    // Start HTTP server
+    server.listen(PORT, () => {
+      logger.info(`SoilWise Edge Hub server running on port ${PORT}`)
+      logger.info('🌱 Edge Hub is ready to serve!')
+    })
   } catch (error) {
-    logger.error('Error during cleanup:', error)
+    logger.error('Failed to start server:', error)
+    process.exit(1)
   }
 }
 
-startEdgeHub()
-
-export { app, server, io }
+// Initialize and start the server
+startServer().catch((error) => {
+  logger.error('Startup error:', error)
+  process.exit(1)
+})

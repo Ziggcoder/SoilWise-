@@ -1,0 +1,11 @@
+{"level":"info","message":"Initialized 4 simulated devices","service":"edge-hub","timestamp":"2025-07-12T08:32:51.230Z"}
+{"level":"info","message":"API routes setup complete","service":"edge-hub","timestamp":"2025-07-12T08:32:51.242Z"}
+{"level":"info","message":"Starting SoilWise Edge Hub services...","service":"edge-hub","timestamp":"2025-07-12T08:32:51.245Z"}
+{"level":"info","message":"Database tables created successfully","service":"edge-hub","timestamp":"2025-07-12T08:32:52.787Z"}
+{"level":"info","message":"Local database initialized successfully","service":"edge-hub","timestamp":"2025-07-12T08:32:52.790Z"}
+{"level":"info","message":"Database initialized","service":"edge-hub","timestamp":"2025-07-12T08:32:52.792Z"}
+{"level":"info","message":"Found 4 serial ports","service":"edge-hub","timestamp":"2025-07-12T08:32:52.838Z"}
+{"level":"info","message":"SensorManager started successfully","service":"edge-hub","timestamp":"2025-07-12T08:32:52.841Z"}
+{"level":"info","message":"Sensor Manager started","service":"edge-hub","timestamp":"2025-07-12T08:32:52.843Z"}
+{"level":"info","message":"MQTT Service connected","service":"edge-hub","timestamp":"2025-07-12T08:32:55.129Z"}
+{"level":"info","message":"Connected to MQTT broker","service":"edge-hub","timestamp":"2025-07-12T08:32:55.186Z"}

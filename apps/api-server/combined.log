@@ -2397,3 +2397,27 @@
 {"level":"info","message":"Subscribed to topic:","topic":"alerts/+"}
 {"level":"info","message":"Subscribed to topic:","topic":"system/health"}
 {"level":"info","message":"SIGINT received, shutting down gracefully"}
+{"level":"warn","message":"MQTT client offline"}
+{"level":"info","message":"MQTT client reconnecting"}
+{"brokerUrl":"mqtt://localhost:1883","level":"info","message":"MQTT client connected to broker"}
+{"level":"info","message":"Subscribed to topic:","topic":"sensors/+/readings"}
+{"level":"info","message":"Subscribed to topic:","topic":"sensors/+/status"}
+{"level":"info","message":"Subscribed to topic:","topic":"alerts/+"}
+{"level":"info","message":"Subscribed to topic:","topic":"system/health"}
+{"level":"warn","message":"MQTT client offline"}
+{"level":"info","message":"MQTT client reconnecting"}
+{"brokerUrl":"mqtt://localhost:1883","level":"info","message":"MQTT client connected to broker"}
+{"level":"info","message":"Subscribed to topic:","topic":"sensors/+/readings"}
+{"level":"info","message":"Subscribed to topic:","topic":"sensors/+/status"}
+{"level":"info","message":"Subscribed to topic:","topic":"alerts/+"}
+{"level":"info","message":"Subscribed to topic:","topic":"system/health"}
+{"level":"info","message":"Initializing in-memory database (placeholder)"}
+{"level":"info","message":"Database initialized"}
+{"level":"info","message":"Setting up Socket.IO server"}
+{"level":"info","message":"Socket.IO configured"}
+{"level":"info","message":"Server running on port 9171"}
+{"brokerUrl":"mqtt://localhost:1883","level":"info","message":"MQTT client connected to broker"}
+{"level":"info","message":"Subscribed to topic:","topic":"sensors/+/readings"}
+{"level":"info","message":"Subscribed to topic:","topic":"sensors/+/status"}
+{"level":"info","message":"Subscribed to topic:","topic":"alerts/+"}
+{"level":"info","message":"Subscribed to topic:","topic":"system/health"}
